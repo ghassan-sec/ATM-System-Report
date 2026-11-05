@@ -1,0 +1,35 @@
+print("="*67)
+print("Welcome To ATM System")
+print("="*67)
+
+customer_name = input("Enter Your Customer Name : ")
+balance = 1000
+
+print("1.Deposit")
+print("2.Withdraw")
+
+choice = int(input("Choice Operation : "))
+
+if choice == 1:
+    amount = float(input("Enter Deposit Amount : "))
+    balance = balance + amount
+    opreation = "Deposit"
+
+elif choice == 2:
+    amount = float(input("Enter Withdraw Amount : "))
+
+if amount <= balance:
+    balance = balance - amount
+    opreation = "Withdraw"
+
+else:
+    print("Insufficient Balance")
+    opreation = "Failed Withdraw" 
+
+with open("atm.txt", "a") as a:
+    a.write("\n" + customer_name + " | " + opreation + " | " + str(balance))
+
+print("\n-----REPORT-----")
+print("Customer:", customer_name)
+print("Operation:", opreation)
+print("Balance:", balance)
